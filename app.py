@@ -1,6 +1,8 @@
 import dotenv
 import os
 from webdriver import driver
+import time
+import schedule
 
 dotenv.load_dotenv()
 
@@ -11,12 +13,24 @@ lastname = os.getenv("last")
 
 main_driver = driver()
 
-main_driver.microsoftLogin(email, password)
-url = main_driver.getFormUrl()
-print(url)
+def takeAttendance():
+    main_driver.microsoftLogin(email, password)
+    url = main_driver.getFormUrl()
+    print(url)
 
-main_driver.googleLogin(email, password)
+    main_driver.googleLogin(email, password)
 
-main_driver.submitForm(firstname, lastname, url)
+    main_driver.submitForm(firstname, lastname, url)
 
-main_driver.closeDriver()
+    main_driver.closeDriver()
+
+
+if(__name__ == "__main__"):
+    schedule.every().monday.at("7:30").do(takeAttendance)
+    schedule.every().tuesday.at("7:30").do(takeAttendance)
+    schedule.every().wednesday.at("7:30").do(takeAttendance)
+    schedule.every().thursday.at("7:30").do(takeAttendance)
+    schedule.every().friday.at("7:30").do(takeAttendance)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
