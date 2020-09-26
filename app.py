@@ -26,11 +26,11 @@ def takeAttendance():
 
 
 if(__name__ == "__main__"):
-    schedule.every().monday.at("7:30").do(takeAttendance)
-    schedule.every().tuesday.at("7:30").do(takeAttendance)
-    schedule.every().wednesday.at("7:30").do(takeAttendance)
-    schedule.every().thursday.at("7:30").do(takeAttendance)
-    schedule.every().friday.at("7:30").do(takeAttendance)
+    schedule.every().monday.at("07:30").do(takeAttendance)
+    schedule.every().tuesday.at("07:30").do(takeAttendance)
+    schedule.every().wednesday.at("07:30").do(takeAttendance)
+    schedule.every().thursday.at("07:30").do(takeAttendance)
+    schedule.every().friday.at("07:30").do(takeAttendance)
     while True:
         schedule.run_pending()
         time.sleep(1)
