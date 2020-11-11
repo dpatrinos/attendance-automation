@@ -4,14 +4,20 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import time
+import os
+import dotenv
 
 
 class driver:
     def __init__(self):
+        path = os.getenv("exec_path")
         options = Options()
+        cap = DesiredCapabilities().FIREFOX
+        cap["marionette"] = False
         options.add_argument("--headless")
-        self.driver = webdriver.Firefox(options=options)
+        self.driver = webdriver.Firefox(capabilities=cap, options=options, executable_path=path)
 
     def closeDriver(self):
         self.driver.close()
