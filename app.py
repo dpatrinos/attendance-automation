@@ -22,8 +22,6 @@ def takeAttendance():
 
     main_driver.submitForm(firstname, lastname, url)
 
-    main_driver.closeDriver()
-
 
 if(__name__ == "__main__"):
     schedule.every().monday.at("07:30").do(takeAttendance)
@@ -34,3 +32,9 @@ if(__name__ == "__main__"):
     while True:
         schedule.run_pending()
         time.sleep(1)
+
+    main_driver.closeDriver()
+
+    
+
+
